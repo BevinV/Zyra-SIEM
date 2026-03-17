@@ -6,8 +6,6 @@ import uuid
 import winreg
 from scapy.all import sniff, IP, DNS, UDP
 import ipinfo
-from urllib.parse import quote
-from pymongo import MongoClient
 from threading import Thread, Lock
 from queue import Queue
 import platform
@@ -62,48 +60,43 @@ if platform.system() != "Windows":
     print("This agent is designed for Windows only.")
     sys.exit(1)
 
-# MongoDB connection
-DB_PASSWORD = "Hacker@66202"
-ENCODED_PASSWORD = quote(DB_PASSWORD)
-MONGO_URI = f"mongodb+srv://zyraadmin:{ENCODED_PASSWORD}@zyrasiemcluster.8ydms.mongodb.net/?retryWrites=true&w=majority&appName=ZyraSiemCluster"
-
-mongo_client = None
-db = None
-device_collection = None
-logs_collection = None
-alerts_collection = None
-
-def initialize_mongo():
-    global mongo_client, db, device_collection, logs_collection, alerts_collection
-    try:
-        mongo_client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=10000)
-        db = mongo_client["zyra_siem"]
-        device_collection = db["device_info"]
-        logs_collection = db["logs"]
-        alerts_collection = db["alerts"]
-        logger.info("Connected to MongoDB successfully")
-        print("Connected to MongoDB successfully")
-    except Exception as e:
-        logger.error(f"Failed to connect to MongoDB: {e}\n{traceback.format_exc()}")
-        print("Failed to connect to MongoDB. Using local storage until connection is restored.")
-
-initialize_mongo()
+# SQLite database configuration
+LOCAL_DB_FILE = "local_storage.db"
+SERVER_DB_FILE = "server_local_storage.db"
+db_lock = Lock()
 
 # API endpoints
 API_SERVER_URL = "http://localhost:5000"  # API server running on port 5000
 VT_API_KEY_URL = f"{API_SERVER_URL}/get_vt_api_key"
 COMMAND_URL = f"{API_SERVER_URL}/command"
 
-# SQLite local storage setup
-LOCAL_DB_FILE = "local_storage.db"
+# SQLite database setup
 def init_local_db():
+    """Initialize local SQLite database for agent data"""
     try:
         conn = sqlite3.connect(LOCAL_DB_FILE)
         cursor = conn.cursor()
         cursor.execute('''CREATE TABLE IF NOT EXISTS logs
-                          (id INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT)''')
+                          (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                           agent_id TEXT, 
+                           timestamp TEXT, 
+                           data TEXT)''')
         cursor.execute('''CREATE TABLE IF NOT EXISTS alerts
-                          (id INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT)''')
+                          (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                           agent_id TEXT, 
+                           timestamp TEXT, 
+                           type TEXT,
+                           severity TEXT,
+                           details TEXT,
+                           data TEXT)''')
+        cursor.execute('''CREATE TABLE IF NOT EXISTS device_info
+                          (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                           agent_id TEXT UNIQUE, 
+                           hostname TEXT,
+                           os TEXT,
+                           first_seen TEXT,
+                           last_updated TEXT,
+                           data TEXT)''')
         conn.commit()
         conn.close()
         logger.info("Local SQLite database initialized")
@@ -430,46 +423,113 @@ def detect_anomalies(metrics, dns_data, network_data, system_logs, security_logs
     return alerts
 
 def store_locally(data, table):
+    """Store data in local SQLite database"""
     try:
-        conn = sqlite3.connect(LOCAL_DB_FILE)
-        cursor = conn.cursor()
-        cursor.execute(f"INSERT INTO {table} (data) VALUES (?)", (json.dumps(data),))
-        conn.commit()
-        conn.close()
-        logger.info(f"Data stored locally in {table}")
+        with db_lock:
+            conn = sqlite3.connect(LOCAL_DB_FILE)
+            cursor = conn.cursor()
+            
+            if table == "logs":
+                cursor.execute(
+                    "INSERT INTO logs (agent_id, timestamp, data) VALUES (?, ?, ?)",
+                    (data.get("agent_id"), data.get("timestamp"), json.dumps(data))
+                )
+            elif table == "alerts":
+                for alert in data if isinstance(data, list) else [data]:
+                    cursor.execute(
+                        "INSERT INTO alerts (agent_id, timestamp, type, severity, details, data) VALUES (?, ?, ?, ?, ?, ?)",
+                        (alert.get("agent_id"), alert.get("timestamp"), alert.get("type"), 
+                         alert.get("severity"), alert.get("details"), json.dumps(alert))
+                    )
+            elif table == "device_info":
+                cursor.execute(
+                    "INSERT OR REPLACE INTO device_info (agent_id, hostname, os, first_seen, last_updated, data) VALUES (?, ?, ?, ?, ?, ?)",
+                    (data.get("agent_id"), data.get("hostname"), data.get("os"),
+                     data.get("first_seen"), data.get("last_updated"), json.dumps(data))
+                )
+            
+            conn.commit()
+            conn.close()
+            logger.info(f"Data stored locally in {table}")
     except Exception as e:
         logger.error(f"Error storing data locally in {table}: {e}\n{traceback.format_exc()}")
 
-def sync_local_data():
-    global db, logs_collection, alerts_collection
-    for table, collection in [("logs", logs_collection), ("alerts", alerts_collection)]:
-        try:
+def sync_to_server():
+    """Sync local data to server via HTTP API"""
+    try:
+        with db_lock:
             conn = sqlite3.connect(LOCAL_DB_FILE)
             cursor = conn.cursor()
-            cursor.execute(f"SELECT data FROM {table}")
-            local_data = [json.loads(row[0]) for row in cursor.fetchall()]
-            if local_data and db is not None:
-                collection.insert_many(local_data)
-                logger.info(f"Synced {len(local_data)} items from {table} to MongoDB")
-                cursor.execute(f"DELETE FROM {table}")
+            
+            # Sync logs
+            cursor.execute("SELECT id, agent_id, timestamp, data FROM logs")
+            logs = cursor.fetchall()
+            if logs:
+                for log_id, agent_id, timestamp, data in logs:
+                    try:
+                        response = requests.post(
+                            f"{API_SERVER_URL}/api/v1/ingest/log",
+                            json=json.loads(data),
+                            timeout=5
+                        )
+                        if response.status_code == 200:
+                            cursor.execute("DELETE FROM logs WHERE id = ?", (log_id,))
+                    except Exception as e:
+                        logger.error(f"Failed to sync log {log_id}: {e}")
+                        break
                 conn.commit()
-                logger.info(f"Cleared local storage: {table}")
+                logger.info(f"Synced {len(logs)} logs to server")
+            
+            # Sync alerts
+            cursor.execute("SELECT id, agent_id, timestamp, type, severity, details, data FROM alerts")
+            alerts = cursor.fetchall()
+            if alerts:
+                for alert_id, agent_id, timestamp, alert_type, severity, details, data in alerts:
+                    try:
+                        response = requests.post(
+                            f"{API_SERVER_URL}/api/v1/ingest/alert",
+                            json=json.loads(data),
+                            timeout=5
+                        )
+                        if response.status_code == 200:
+                            cursor.execute("DELETE FROM alerts WHERE id = ?", (alert_id,))
+                    except Exception as e:
+                        logger.error(f"Failed to sync alert {alert_id}: {e}")
+                        break
+                conn.commit()
+                logger.info(f"Synced {len(alerts)} alerts to server")
+            
+            # Sync device info
+            cursor.execute("SELECT agent_id, hostname, os, first_seen, last_updated, data FROM device_info")
+            devices = cursor.fetchall()
+            if devices:
+                for agent_id, hostname, os_info, first_seen, last_updated, data in devices:
+                    try:
+                        response = requests.post(
+                            f"{API_SERVER_URL}/api/v1/ingest/device",
+                            json=json.loads(data),
+                            timeout=5
+                        )
+                        if response.status_code == 200:
+                            logger.info(f"Synced device info for {agent_id}")
+                    except Exception as e:
+                        logger.error(f"Failed to sync device {agent_id}: {e}")
+            
             conn.close()
-        except Exception as e:
-            logger.error(f"Error syncing local data from {table}: {e}\n{traceback.format_exc()}")
+            
+    except Exception as e:
+        logger.error(f"Error syncing to server: {e}\n{traceback.format_exc()}")
 
-def check_connectivity():
+def check_server_connectivity():
+    """Check if server API is accessible"""
     try:
-        if mongo_client is not None:
-            mongo_client.admin.command('ping')
-            return True
-        return False
+        response = requests.get(f"{API_SERVER_URL}/api/v1/dashboard", timeout=2)
+        return response.status_code == 200
     except Exception:
         return False
 
 def store_data实时():
-    global db, logs_collection, alerts_collection
-    
+    """Store collected data to database"""
     log_data = {
         "agent_id": AGENT_ID,
         "timestamp": datetime.now().isoformat(),
@@ -509,34 +569,24 @@ def store_data实时():
             )
             alerts.extend(detected_alerts)
             
-            if check_connectivity():
-                if db is not None:
-                    logs_collection.insert_one(log_data.copy())
-                    logger.info(f"Log stored for agent {AGENT_ID}")
-                    print(f"Log stored for agent {AGENT_ID}")
-                    if alerts:
-                        alerts_collection.insert_many([{**alert, "agent_id": AGENT_ID} for alert in alerts])
-                        logger.info(f"{len(alerts)} alerts stored")
-                        print(f"{len(alerts)} alerts generated")
-                    sync_local_data()
-                else:
-                    logger.warning("MongoDB connection lost. Reconnecting...")
-                    try:
-                        initialize_mongo()
-                        if db is not None:
-                            logger.info("Reconnected to MongoDB")
-                        else:
-                            raise Exception("Reconnection failed")
-                    except Exception as e:
-                        logger.error(f"Failed to reconnect to MongoDB: {e}\n{traceback.format_exc()}")
-                        store_locally(log_data, "logs")
-                        if alerts:
-                            store_locally(alerts, "alerts")
+            # Add agent_id to all alerts
+            for alert in alerts:
+                alert["agent_id"] = AGENT_ID
+            
+            # Store data locally first
+            store_locally(log_data.copy(), "logs")
+            if alerts:
+                store_locally(alerts, "alerts")
+            
+            # Try to sync to server
+            if check_server_connectivity():
+                sync_to_server()
+                logger.info(f"Data synced to server for agent {AGENT_ID}")
+                print(f"Data synced to server for agent {AGENT_ID}")
             else:
-                logger.warning("No internet/MongoDB connection. Storing locally.")
-                store_locally(log_data, "logs")
-                if alerts:
-                    store_locally(alerts, "alerts")
+                logger.warning("Server database not accessible. Data stored locally.")
+                print("Server database not accessible. Data stored locally.")
+                
         except Exception as e:
             logger.error(f"Error in store_data: {e}\n{traceback.format_exc()}")
             store_locally(log_data, "logs")
@@ -546,7 +596,7 @@ def store_data实时():
         time.sleep(5)
 
 def store_device_info():
-    global db, device_collection
+    """Store device information"""
     try:
         device_data = {
             "agent_id": AGENT_ID,
@@ -555,20 +605,14 @@ def store_device_info():
             "first_seen": datetime.now().isoformat(),
             "last_updated": datetime.now().isoformat()
         }
-        if db is not None and check_connectivity():
-            if not device_collection.find_one({"agent_id": AGENT_ID}):
-                device_collection.insert_one(device_data)
-                logger.info(f"Device info stored for {AGENT_ID}")
-            else:
-                device_collection.update_one(
-                    {"agent_id": AGENT_ID},
-                    {"$set": {"last_updated": datetime.now().isoformat()}}
-                )
-        else:
-            store_locally(device_data, "logs")
+        store_locally(device_data, "device_info")
+        logger.info(f"Device info stored for {AGENT_ID}")
+        
+        # Try to sync immediately
+        if check_server_connectivity():
+            sync_to_server()
     except Exception as e:
         logger.error(f"Error storing device info: {e}\n{traceback.format_exc()}")
-        store_locally(device_data, "logs")
 
 if __name__ == "__main__":
     store_device_info()

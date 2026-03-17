@@ -3133,3 +3133,222 @@ TypeError: Object of type JSONResponse is not JSON serializable
 2025-03-03 22:59:47,247 - INFO - MongoDB connected and indexes created
 2025-03-03 23:00:13,692 - INFO - WebSocket disconnected
 2026-02-16 20:12:02,939 - INFO - Starting FastAPI server...
+2026-03-18 00:44:24,773 - INFO - Starting FastAPI server...
+2026-03-18 00:44:24,877 - INFO - SQLite database initialized successfully
+2026-03-18 00:44:24,878 - INFO - Server started with SQLite database
+2026-03-18 00:49:17,749 - INFO - Starting FastAPI server...
+2026-03-18 00:49:17,780 - INFO - SQLite database initialized successfully
+2026-03-18 00:49:17,781 - INFO - Server started with SQLite database
+2026-03-18 00:49:17,782 - INFO - Server shutting down
+2026-03-18 00:49:57,663 - INFO - Server shutting down
+2026-03-18 00:50:02,977 - INFO - Starting FastAPI server...
+2026-03-18 00:50:03,013 - INFO - SQLite database initialized successfully
+2026-03-18 00:50:03,013 - INFO - Server started with SQLite database
+2026-03-18 00:55:45,396 - INFO - Server shutting down
+2026-03-18 00:57:53,632 - INFO - Starting FastAPI server...
+2026-03-18 00:57:53,758 - INFO - SQLite database initialized successfully
+2026-03-18 00:57:53,758 - INFO - Server started with SQLite database
+2026-03-18 00:58:07,605 - INFO - WebSocket disconnected
+2026-03-18 00:58:09,827 - INFO - WebSocket disconnected
+2026-03-18 01:01:46,359 - INFO - WebSocket disconnected
+2026-03-18 01:01:46,419 - INFO - Server shutting down
+2026-03-18 01:01:48,950 - INFO - Starting FastAPI server...
+2026-03-18 01:01:49,000 - INFO - SQLite database initialized successfully
+2026-03-18 01:01:49,000 - INFO - Server started with SQLite database
+2026-03-18 01:02:28,373 - INFO - WebSocket disconnected
+2026-03-18 01:02:29,118 - INFO - WebSocket disconnected
+2026-03-18 01:02:30,333 - INFO - WebSocket disconnected
+2026-03-18 01:02:31,289 - INFO - WebSocket disconnected
+2026-03-18 01:02:32,124 - INFO - WebSocket disconnected
+2026-03-18 01:02:58,323 - INFO - WebSocket disconnected
+2026-03-18 01:02:58,877 - INFO - WebSocket disconnected
+2026-03-18 01:03:29,996 - INFO - WebSocket disconnected
+2026-03-18 01:03:30,856 - INFO - WebSocket disconnected
+2026-03-18 01:03:57,412 - INFO - WebSocket disconnected
+2026-03-18 01:03:59,527 - INFO - WebSocket disconnected
+2026-03-18 01:04:01,575 - INFO - WebSocket disconnected
+2026-03-18 01:04:57,376 - INFO - WebSocket disconnected
+2026-03-18 01:06:12,778 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:06:17,001 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:06:19,092 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:06:21,186 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:06:27,368 - INFO - WebSocket disconnected
+2026-03-18 01:06:29,666 - INFO - WebSocket disconnected
+2026-03-18 01:06:32,089 - INFO - WebSocket disconnected
+2026-03-18 01:06:33,250 - INFO - WebSocket disconnected
+2026-03-18 01:06:33,338 - INFO - WebSocket disconnected
+2026-03-18 01:06:34,195 - INFO - WebSocket disconnected
+2026-03-18 01:06:34,747 - INFO - WebSocket disconnected
+2026-03-18 01:06:37,208 - INFO - WebSocket disconnected
+2026-03-18 01:06:48,468 - INFO - WebSocket disconnected
+2026-03-18 01:06:52,036 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:06:52,728 - INFO - WebSocket disconnected
+2026-03-18 01:06:54,088 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:06:54,330 - INFO - WebSocket disconnected
+2026-03-18 01:06:56,155 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:06:56,504 - INFO - WebSocket disconnected
+2026-03-18 01:06:57,474 - INFO - WebSocket disconnected
+2026-03-18 01:06:58,271 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:00,343 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:02,414 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:04,521 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:05,366 - INFO - WebSocket disconnected
+2026-03-18 01:07:05,963 - INFO - WebSocket disconnected
+2026-03-18 01:07:21,891 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:23,967 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:26,050 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:28,152 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:30,215 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:32,271 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:34,365 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:07:53,015 - INFO - WebSocket disconnected
+2026-03-18 01:07:54,988 - INFO - WebSocket disconnected
+2026-03-18 01:07:56,327 - INFO - WebSocket disconnected
+2026-03-18 01:08:02,649 - INFO - WebSocket disconnected
+2026-03-18 01:08:03,958 - INFO - WebSocket disconnected
+2026-03-18 01:08:07,015 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:09,078 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:11,129 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:13,194 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:15,270 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:17,475 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:19,574 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:21,625 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:39,088 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:41,136 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:43,224 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:45,279 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:47,337 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:49,408 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:51,494 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:53,538 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:55,595 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:08:57,659 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:06,924 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:07,776 - INFO - WebSocket disconnected
+2026-03-18 01:09:09,089 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:10,095 - INFO - WebSocket disconnected
+2026-03-18 01:09:11,172 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:13,252 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:15,307 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:17,399 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:19,428 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:21,483 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:35,381 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:37,446 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:39,488 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:41,569 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:43,659 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:45,709 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:47,806 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:49,955 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:09:59,176 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:01,264 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:03,352 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:05,431 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:07,489 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:09,557 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:18,740 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:20,789 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:22,871 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:24,918 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:26,970 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:29,024 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:10:31,096 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:04,120 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:06,217 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:08,282 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:10,389 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:12,470 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:14,525 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:16,572 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:25,791 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:27,854 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:29,944 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:32,008 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:34,060 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:36,158 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:45,424 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:47,512 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:50,033 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:52,151 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:54,219 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:56,292 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:11:58,394 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:28,501 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:30,597 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:32,687 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:34,774 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:36,836 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:38,924 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:41,011 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:43,070 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:45,164 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:47,228 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:12:49,307 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:04,808 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:06,879 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:08,946 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:11,002 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:13,101 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:15,171 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:17,225 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:19,365 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:28,587 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:30,728 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:32,810 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:34,896 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:36,960 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:39,022 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:41,082 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:43,155 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:45,252 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:13:58,958 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:01,072 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:03,158 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:05,252 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:07,322 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:09,386 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:11,493 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:13,665 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:15,761 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:17,827 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:19,909 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:22,000 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:33,969 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:36,064 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:38,129 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:40,208 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:42,315 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:44,377 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:46,414 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:48,497 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:14:59,185 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:01,271 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:03,353 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:05,425 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:07,516 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:09,594 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:11,674 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:13,778 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:22,939 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:25,005 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:27,076 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:29,156 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:31,227 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:33,317 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:35,496 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:48,006 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:50,113 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:52,174 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:54,201 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:56,289 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:15:57,410 - INFO - WebSocket disconnected
+2026-03-18 01:15:58,336 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:16:00,451 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:16:02,566 - INFO - Ingested device info from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:16:13,123 - INFO - Ingested log from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:16:15,209 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:16:17,294 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:16:19,357 - INFO - Ingested alert from agent 3f242c2b-79e9-4072-b6bc-39cb977d5c13
+2026-03-18 01:16:20,525 - INFO - Server shutting down
